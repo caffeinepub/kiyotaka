@@ -1,0 +1,259 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Geist Mono for data/numbers */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Sora for body text */
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bricolage Grotesque for headings */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* ============================================
+       KIYOTAKA — PREMIUM DARK TERMINAL PALETTE
+       Deep midnight navy with strong layer steps
+       ============================================ */
+
+    /* Layer 0 — Void: the deepest background */
+    --background: 0.10 0.022 265;
+
+    /* Layer 1 — Surface: card backgrounds */
+    --card: 0.135 0.026 265;
+    --card-foreground: 0.93 0.012 255;
+
+    /* Layer 2 — Elevated: popover/modal */
+    --popover: 0.165 0.028 265;
+    --popover-foreground: 0.93 0.012 255;
+
+    /* Foreground — bright cool white */
+    --foreground: 0.93 0.012 255;
+
+    /* Primary — electric cyan */
+    --primary: 0.74 0.20 208;
+    --primary-foreground: 0.08 0.025 265;
+
+    /* Secondary — subtle elevated surface */
+    --secondary: 0.175 0.026 265;
+    --secondary-foreground: 0.82 0.015 255;
+
+    /* Muted — for inactive/background elements */
+    --muted: 0.195 0.024 265;
+    --muted-foreground: 0.52 0.028 255;
+
+    /* Accent — cyan-tinted hover state */
+    --accent: 0.22 0.030 265;
+    --accent-foreground: 0.74 0.20 208;
+
+    /* Destructive — saturated red */
+    --destructive: 0.62 0.26 22;
+    --destructive-foreground: 0.97 0.01 0;
+
+    /* Border — visible but not loud */
+    --border: 0.24 0.028 265;
+    --input: 0.195 0.026 265;
+    --ring: 0.74 0.20 208;
+
+    /* === Semantic gain/loss === */
+    --gain-raw: 0.72 0.19 152;
+    --loss-raw: 0.62 0.26 22;
+
+    /* Chart palette — terminal-quality colors */
+    --chart-1: 0.74 0.20 208;   /* cyan-blue */
+    --chart-2: 0.72 0.19 152;   /* green */
+    --chart-3: 0.62 0.26 22;    /* red */
+    --chart-4: 0.76 0.17 58;    /* amber */
+    --chart-5: 0.68 0.22 285;   /* purple */
+
+    /* Sidebar — deepest layer, true black-navy */
+    --sidebar: 0.075 0.020 268;
+    --sidebar-foreground: 0.93 0.012 255;
+    --sidebar-primary: 0.74 0.20 208;
+    --sidebar-primary-foreground: 0.08 0.025 265;
+    --sidebar-accent: 0.135 0.026 265;
+    --sidebar-accent-foreground: 0.93 0.012 255;
+    --sidebar-border: 0.19 0.024 265;
+    --sidebar-ring: 0.74 0.20 208;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: "Geist Mono", ui-monospace, monospace;
+  }
+
+  /* === Semantic color utilities === */
+  .text-gain {
+    color: oklch(0.72 0.19 152);
+  }
+  .text-loss {
+    color: oklch(0.62 0.26 22);
+  }
+  .bg-gain {
+    background-color: oklch(0.72 0.19 152 / 0.12);
+  }
+  .bg-loss {
+    background-color: oklch(0.62 0.26 22 / 0.12);
+  }
+  .border-gain {
+    border-color: oklch(0.72 0.19 152 / 0.35);
+  }
+  .border-loss {
+    border-color: oklch(0.62 0.26 22 / 0.35);
+  }
+
+  /* === Glow effects === */
+  .glow-primary {
+    box-shadow: 0 0 24px oklch(0.74 0.20 208 / 0.28);
+  }
+  .glow-gain {
+    box-shadow: 0 0 14px oklch(0.72 0.19 152 / 0.35);
+  }
+  .glow-loss {
+    box-shadow: 0 0 14px oklch(0.62 0.26 22 / 0.35);
+  }
+
+  /* === Surface elevation shadows — critical for depth === */
+  .shadow-surface {
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.4),
+      0 1px 0 oklch(1 0 0 / 0.04) inset;
+  }
+  .shadow-raised {
+    box-shadow:
+      0 4px 16px oklch(0 0 0 / 0.45),
+      0 1px 0 oklch(1 0 0 / 0.06) inset;
+  }
+  .shadow-floating {
+    box-shadow:
+      0 8px 32px oklch(0 0 0 / 0.55),
+      0 1px 0 oklch(1 0 0 / 0.08) inset;
+  }
+
+  /* === Panel — standard surface card === */
+  .panel {
+    @apply bg-card border border-border rounded-md shadow-surface;
+  }
+
+  /* === Panel accent variants (top-edge line) — used for hero panels === */
+  .panel-cyan {
+    @apply panel;
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.4),
+      0 1px 0 oklch(1 0 0 / 0.04) inset,
+      0 -1px 0 oklch(0.74 0.20 208 / 0.6) inset;
+  }
+  .panel-gain {
+    @apply panel;
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.4),
+      0 1px 0 oklch(1 0 0 / 0.04) inset,
+      0 -1px 0 oklch(0.72 0.19 152 / 0.6) inset;
+  }
+  .panel-loss {
+    @apply panel;
+    box-shadow:
+      0 1px 3px oklch(0 0 0 / 0.4),
+      0 1px 0 oklch(1 0 0 / 0.04) inset,
+      0 -1px 0 oklch(0.62 0.26 22 / 0.6) inset;
+  }
+
+  /* === Section label — unified treatment === */
+  .section-label {
+    @apply font-display text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground;
+  }
+
+  /* === Table row hover === */
+  .table-row-hover {
+    @apply transition-colors duration-100;
+  }
+  .table-row-hover:hover {
+    background: oklch(0.175 0.028 265);
+  }
+
+  /* === Number emphasis — for price values === */
+  .num-primary {
+    @apply font-mono font-medium text-foreground tabular-nums;
+  }
+  .num-secondary {
+    @apply font-mono text-muted-foreground tabular-nums;
+  }
+  .num-lg {
+    @apply font-mono font-semibold text-foreground tabular-nums;
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.10 0.022 265);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.26 0.028 265);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.74 0.20 208 / 0.8);
+  }
+
+  /* === Background texture for depth === */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* === Ticker / badge animation === */
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+}
