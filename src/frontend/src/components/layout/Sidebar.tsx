@@ -100,7 +100,7 @@ export function Sidebar({ activePage, onNavigate }: SidebarProps) {
               className="flex flex-col"
             >
               <span className="font-display font-bold text-sm tracking-[0.18em] text-foreground whitespace-nowrap leading-tight">
-                KIYOTAKA
+                GIOTAKA
               </span>
               <span className="text-[9px] font-mono text-muted-foreground/40 tracking-[0.1em]">
                 CRYPTO TERMINAL

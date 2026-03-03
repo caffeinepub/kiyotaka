@@ -36,7 +36,7 @@ function Footer() {
       style={{ background: "oklch(0.075 0.020 268)" }}
     >
       <span className="text-[10px] font-mono text-muted-foreground/30 tracking-wider">
-        KIYOTAKA v1.0
+        GIOTAKA v1.0
       </span>
       <a
         href={`https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(typeof window !== "undefined" ? window.location.hostname : "")}`}
